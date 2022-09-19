@@ -49,6 +49,11 @@ public class StepDefATM {
         atm.withdraw(amount);
     }
 
+    @When("I deposit {float} to ATM")
+    public void i_deposit_to_atm(double amount){
+        atm.deposit(amount);
+    }
+
     @When("I overdraw {float} from ATM")
     public void i_withdraw_from_atm_more_than_balance(double amount) throws NotEnoughBalanceException {
         assertThrows(NotEnoughBalanceException.class,
@@ -69,5 +74,7 @@ public class StepDefATM {
         assertEquals(balance,
                      bank.getCustomer(id).getAccount().getBalance());
     }
+
+
 
 }
